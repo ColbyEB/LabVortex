@@ -1,38 +1,23 @@
 import RPi.GPIO as GPIO
-import linefollower.py as detector
 import time
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(27, GPIO.IN)
 #digital read pin
-
+clockspeed = 10
 GPIO.setup(3, GPIO.OUT)
 
 def clockpinupdate():
     GPIO.output(3, GPIO.HIGH)
-    wait(.001)
+    time.sleep(.001)
     GPIO.output(3, GPIO.LOW)
     
-class muxdetector:
-    def __init__(self, clockspeed, numdetectors):
-        self.clockspeed = clockspeed
-        self.numdetectors = numdetectors
+    
+detectorvalues = [0,0,0]
 
-    def setup:
-        self.detectors[self.numdetectors]
-        for x in self.numdetectors:
-            detectors[x] = detector(x, x)
-    def clock(clockspeed):
-        self.digitalvalues[numdetectors]
-        while True:
-            #something about clockspeed something modulus
-            for x in numdetectors:
-                digitalvalues[x] = detectors[x].getValue()
-            clockpinupdate()
-            wait(1/clockspeed)
-            print(self.digitalvalues)
-        
-
-
-
-
+while True:
+    for x in range(3):
+        detectorvalues[x] = GPIO.input(27)
+        clockpinupdate()
+    time.sleep(1/clockspeed)
+    print(detectorvalues)
