@@ -1,10 +1,10 @@
 import RPi.GPIO as GPIO
 import detector
-from threading import thread 
+import threading 
 
 
-thread = detector.runForValues
-thread.start()
+x = threading.Thread(target = detector.runForValues, args=())
+x.start()
 
 while True:
     print(detector.position)
