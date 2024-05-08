@@ -14,10 +14,10 @@ def clockpinupdate():
     
     
 detectorvalues = [0,0,0]
-
-while True:
-    for x in range(3):
-        detectorvalues[x] = GPIO.input(27)
-        clockpinupdate()
-    time.sleep(1/clockspeed)
-    print(detectorvalues)
+def runForValues():
+    while True:
+        for x in range(3):
+            detectorvalues[x] = GPIO.input(27)
+            clockpinupdate()
+        time.sleep(1/clockspeed)
+        print(detectorvalues)
