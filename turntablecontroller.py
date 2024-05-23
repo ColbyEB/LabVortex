@@ -12,15 +12,18 @@ pwm_low = GPIO.PWM(pwm_low_pin, 100)    # 1000 Hz frequency
 pwm_high.start(0)
 pwm_low.start(0)
 
-def pwmStartFwd():
-    while True:
-        pwm_high.ChangeDutyCycle(15)  # Start PWM with 6% duty cycle
-        pwm_low.ChangeDutyCycle(0)   # Start PWM with 0% duty cycle
+def fwd():
+    print("fwd")
+    pwm_high.ChangeDutyCycle(14.95)  # Start PWM with 6% duty cycle
+    pwm_low.ChangeDutyCycle(0)   # Start PWM with 0% duty cycle
+def reverse():
+    #center is 15
+    print("reverse")
+    pwm_high.ChangeDutyCycle(13.85)  # Start PWM with 6% duty cycle
+    pwm_low.ChangeDutyCycle(0)   # Start PWM with 0% duty cycle
+def off():
+    print("off")
+    pwm_high.ChangeDutyCycle(0)
+    pwm_low.ChangeDutyCycle(0)
 
-def pwmStartReverse():
-    while True:
-        pwm_high.ChangeDutyCycle(13)  # Start PWM with 6% duty cycle
-        pwm_low.ChangeDutyCycle(0)   # Start PWM with 0% duty cycle
 
-pwmStartReverse()
-print("donezo")
